@@ -23,14 +23,15 @@ export class AdmissionFormComponent implements OnInit{
     this.admitForm.setValue({firstName:'Jane', lastName:'Doe', mrn: 'T918273', date: (new Date().toISOString())});
 
    }
+  onSubmit(){}
   
-  onSubmit() {
+  onAdmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.admitForm.value);
     var JSONString = JSON.stringify(this.admitForm.value)
     
-    this.epcisIRISservice.saveRequest(JSONString).subscribe((data: any) => {
-      this.reset()
+    this.epcisIRISservice.admitPatient(JSONString).subscribe((data: any) => {
+      //this.reset()
       console.log("Success", data, "success");
 
     }, error => {
@@ -38,8 +39,28 @@ export class AdmissionFormComponent implements OnInit{
     })
   }
 
-  submit(){
+  onDischarge() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.admitForm.value);
+    var JSONString = JSON.stringify(this.admitForm.value)
+    
+    this.epcisIRISservice.dischargePatient(JSONString).subscribe((data: any) => {
+      //this.reset()
+      console.log("Success", data, "success");
+
+    }, error => {
+      console.log("There was an error in discharge process", error);
+    })
+  }
+
+  admit(){
+    this.onAdmit();
     console.log("submitting");
+  }
+
+  discharge(){
+    this.onDischarge();
+    console.log("discharging");
   }
   submitted = false;
 
