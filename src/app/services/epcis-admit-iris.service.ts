@@ -16,7 +16,7 @@ export class EPCISIRISService {
 
   private log(message: string) {
     console.warn("called...")
-    this.messageService.add(`EPCIS Admit Service: ${message}`);
+    this.messageService.add(`EPCIS ADT Service: ${message}`);
   }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -37,13 +37,22 @@ export class EPCISIRISService {
       'responseType': 'json'})
   };
 
-  saveRequest(admitForm: any):Observable<any> {
+  admitPatient(admitForm: any):Observable<any> {
 
     const headers = new HttpHeaders()
     let url = 'http://localhost:52773/query/demoStep1'
     return this.http.post<any>(url, admitForm,this.httpOptions)
     .pipe(
-      tap((newrequest: any) => this.log(`${newrequest.Status}`)),
-      catchError(this.handleError<any>('saverequest')))
+      tap((newAdmit: any) => this.log(`${newAdmit.PAS}`)),
+      catchError(this.handleError<any>('admitPatient')))
+  }
+  dischargePatient(admitForm: any):Observable<any> {
+
+    const headers = new HttpHeaders()
+    let url = 'http://localhost:52773/query/demoStep8'
+    return this.http.post<any>(url, admitForm,this.httpOptions)
+    .pipe(
+      tap((newDischarge: any) => this.log(`${newDischarge.PAS}`)),
+      catchError(this.handleError<any>('dischargePatient')))
   }
 }
