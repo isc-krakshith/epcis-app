@@ -38,20 +38,32 @@
     align-content: right;
   }
 
-  .small-box, .large-box {
+  .runner-screen, .adt-screen, .pharmacy-screen {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
     margin: 16px;
     padding: 16px;
     border-radius: 8px;
   }
   
-  .small-box {
-    height: 100px;
-    width: 100px;
+  .runner-screen {
+    height: 750px;
+    width: 380px;
+    border-radius: 36px;
   }
   
+  .adt-screen {
+    height: 300px;
+    width: 450px;
+  }
+
+  .pharmacy-screen {
+    height: 910px;
+    width: 630px;
+    border-radius: 36px;
+  }
+
   .large-box {
     height: 400px;
     width: 400px;
