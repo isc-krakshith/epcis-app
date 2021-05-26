@@ -1,5 +1,43 @@
 <div class="tablet">
   <div class="content">
-      PHARMACY UI
+<button mat-button [matMenuTriggerFor]="stockMenu" 
+    #stockTrigger="matMenuTrigger"
+    (mouseover)="stockTrigger.openMenu()">Stock</button>
+<mat-menu #stockMenu="matMenu" xPosition="after"
+    [overlapTrigger]="false">
+<span (mouseleave)="stockTrigger.closeMenu()">
+  <button mat-menu-item>Inventory</button>
+  <button mat-menu-item>On Order</button>
+  </span>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="linkMenu" #linkTrigger="matMenuTrigger" (mouseover)="linkTrigger.openMenu()">Link</button>
+<mat-menu #linkMenu="matMenu" xPosition="after"
+    [overlapTrigger]="false">
+<span (mouseleave)="linkTrigger.closeMenu()">
+  <button mat-menu-item (click) = "toggleDisplay()">Discharge Document</button>
+  <button mat-menu-item>Pigeon-hole</button>
+</span>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="lookupMenu" #lookupTrigger="matMenuTrigger" (mouseover)="lookupTrigger.openMenu()">Lookup</button>
+<mat-menu #lookupMenu="matMenu" xPosition="after"
+    [overlapTrigger]="false">
+<span (mouseleave)="lookupTrigger.closeMenu()">
+  <button mat-menu-item>Generic Name</button>
+  <button mat-menu-item>Active Ingredient</button>
+</span>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="aboutMenu"  #aboutTrigger="matMenuTrigger" (mouseover)="aboutTrigger.openMenu()">About</button>
+<mat-menu #aboutMenu="matMenu" xPosition="after"
+    [overlapTrigger]="false">
+<span (mouseleave)="aboutTrigger.closeMenu()">
+  <button mat-menu-item>EPCIS Demo</button>
+</span>
+</mat-menu>
+<div *ngIf = isShow>
+  <img class = "scan-doc" src="assets/img/DischargeSummary.jpg" width="250">
+</div>
   </div>
 </div>

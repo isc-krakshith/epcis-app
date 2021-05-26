@@ -49,3 +49,8 @@ body {
     background: white;
     margin: -1px;
   }
+  .scan-doc {
+    margin-left: 20px;
+    margin-top: 20px;
+    border: 5px solid #555;
+  }
