@@ -11,6 +11,8 @@ import { AdmissionFormComponent } from './admission-form/admission-form.componen
 import { PharmacyUiComponent } from './pharmacy-ui/pharmacy-ui.component';
 import { RunnerAppComponent } from './runner-app/runner-app.component';
 import { MessagesComponent } from './messages/messages.component';
+import { ScanComponent } from './shared/scan.component/scan.component';
+import { ComingSoonComponent } from './shared/comingsoon.component/comingsoon.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MessagesComponent } from './messages/messages.component';
     AdmissionFormComponent,
     PharmacyUiComponent,
     RunnerAppComponent,
-    MessagesComponent
+    MessagesComponent,
+    ScanComponent,
+    ComingSoonComponent
   ],
   imports: [
     BrowserModule,
