@@ -8,13 +8,22 @@ import { Component, OnInit } from '@angular/core';
 export class PharmacyUiComponent implements OnInit {
 
   constructor() { }
-  isShow = false;
- 
-  toggleDisplay() {
-    this.isShow = !this.isShow;
-  }
-  
+  isScan = false;
+  isComingSoon = false;
+
   ngOnInit(): void {
+  }
+
+  loadContent(selection: String)
+  {
+    if (selection == 'scan') {
+      this.isComingSoon = false;
+      this.isScan = true;
+    }
+    else if (selection == 'comingsoon'){
+     this.isScan = false;
+     this.isComingSoon = true;
+    }
   }
 
 }
