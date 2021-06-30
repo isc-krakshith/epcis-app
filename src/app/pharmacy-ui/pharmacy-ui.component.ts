@@ -8,22 +8,41 @@ import { Component, OnInit } from '@angular/core';
 export class PharmacyUiComponent implements OnInit {
 
   constructor() { }
-  isScan = false;
+  isScanDischarge = false;
+  isScanPigeonHole = false;
   isComingSoon = false;
+  isGenLabel = false;
 
   ngOnInit(): void {
   }
 
   loadContent(selection: String)
   {
-    if (selection == 'scan') {
+    if (selection == 'scanDischarge'){
       this.isComingSoon = false;
-      this.isScan = true;
+      this.isScanPigeonHole=false;
+      this.isScanDischarge = true;
+      this.isGenLabel = false;
+    }
+    else if (selection == 'scanPigeonHole'){
+      this.isScanPigeonHole=true;
+      this.isScanDischarge = false;
+      this.isComingSoon = false;
+      this.isGenLabel = false;
     }
     else if (selection == 'comingsoon'){
-     this.isScan = false;
-     this.isComingSoon = true;
+      this.isScanPigeonHole=false;
+      this.isScanDischarge = false;
+      this.isComingSoon = true;
+      this.isGenLabel = false;
     }
+    else if (selection == 'genlabel'){
+      this.isScanPigeonHole=false;
+      this.isScanDischarge = false;
+      this.isComingSoon = false;
+      this.isGenLabel = true;
+    }
+
   }
 
 }
