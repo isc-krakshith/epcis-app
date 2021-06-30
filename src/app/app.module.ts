@@ -13,6 +13,7 @@ import { RunnerAppComponent } from './runner-app/runner-app.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ScanComponent } from './shared/scan.component/scan.component';
 import { ComingSoonComponent } from './shared/comingsoon.component/comingsoon.component';
+import { GenLabelComponent } from './pharmacy-ui/gen-label/gen-label.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ComingSoonComponent } from './shared/comingsoon.component/comingsoon.co
     RunnerAppComponent,
     MessagesComponent,
     ScanComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    GenLabelComponent
   ],
   imports: [
     BrowserModule,
