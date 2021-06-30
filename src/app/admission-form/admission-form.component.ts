@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 
-import {EPCISIRISService} from '../services/epcis-admit-iris.service';
+import {EPCISIRISService} from '../services/epcis-iris.service';
 
 @Component({
   providers:[
