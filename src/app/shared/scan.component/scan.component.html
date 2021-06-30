@@ -1,5 +1,5 @@
 <div>
-    <button class = "scan-button" mat-raised-button color="primary"(click)="onClick()" onClick="this.disabled=true">Scan</button>
+    <button class = "scan-button" mat-raised-button color="primary"(click)="onClick()" [disabled]="counter == 2">Scan</button>
 </div>
 <div>
     <img class = "scan-doc" [@fade]="state" [src]="imageSource" width="400"/>
