@@ -1,5 +1,31 @@
 <div class="smartphone">
   <div class="content">
-      RUNNER APP
-  </div>
-</div>
+    <button mat-button [matMenuTriggerFor]="identifyMenu">Identify</button>
+    <mat-menu #identifyMenu="matMenu" xPosition="after">
+      <button mat-menu-item (click) = "loadContent('identifyPigeonHole')">Pigeon Hole</button>
+      <button mat-menu-item (click) = "loadContent('comingsoon')">Ward</button>
+    </mat-menu>
+    
+    <button mat-button [matMenuTriggerFor]="deliverMenu">Deliver</button>
+    <mat-menu #deliverMenu="matMenu" xPosition="after">
+      <button mat-menu-item (click) = "loadContent('retrieveItems')">Retrieve Items</button>
+      <button mat-menu-item (click) = "loadContent('comingsoon')">Retrieve Locations</button>
+    </mat-menu>
+    
+    <button mat-button [matMenuTriggerFor]="aboutMenu">About</button>
+    <mat-menu #aboutMenu="matMenu" xPosition="after">
+      <button mat-menu-item (click) = "loadContent('comingsoon')">EPCIS Demo</button>
+    </mat-menu>
+    <div *ngIf = isIdentifyPigeonHole>
+      <scan function="scanPigeonhole"></scan>
+    </div>
+    <div *ngIf = isIdentifyWard>
+      <scan function="ward"></scan>
+    </div>
+    <div *ngIf = isRetrieveItems>
+      <app-retrieve-items></app-retrieve-items>
+    </div>
+    <div *ngIf = isComingSoon>
+        <comingsoon component="smartphone"></comingsoon>
+    </div>
+    </div>
