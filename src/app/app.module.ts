@@ -14,6 +14,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { ScanComponent } from './shared/scan.component/scan.component';
 import { ComingSoonComponent } from './shared/comingsoon.component/comingsoon.component';
 import { GenLabelComponent } from './pharmacy-ui/gen-label/gen-label.component';
+import { RetrieveItemsComponent } from './runner-app/retrieve-items/retrieve-items.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GenLabelComponent } from './pharmacy-ui/gen-label/gen-label.component';
     MessagesComponent,
     ScanComponent,
     ComingSoonComponent,
-    GenLabelComponent
+    GenLabelComponent,
+    RetrieveItemsComponent
   ],
   imports: [
     BrowserModule,
