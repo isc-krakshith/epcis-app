@@ -1,0 +1,24 @@
+<div class="gen-label-form">
+    <form [formGroup]= "retrieveItemsForm" (ngSubmit)="onSubmit()">
+        <table cellspacing="0">
+            <tr>
+                <h2 class = form-header>Collection location(s)</h2>
+            </tr>
+            <tr>
+                <td>
+                <div class="entry-button-wrapper">
+                    <button mat-raised-button color="primary" type = submit (click)="getItems()">Retrieve Items for</button>
+                </div>
+                </td>
+                <td>
+                <div class = half-width>
+                    <mat-form-field>
+                        <mat-label>location</mat-label>
+                        <input matInput formControlName="location">
+                    </mat-form-field>
+                </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
