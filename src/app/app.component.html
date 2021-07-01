@@ -26,8 +26,15 @@
     <app-runner-app></app-runner-app>
     </div>
   </mat-tab>
-</mat-tab-group>
 
-<div class="main-content">
-  <app-messages></app-messages>
-</div>
+  <mat-tab>
+    <div class="mat-elevation-z4">
+    <ng-template mat-tab-label>
+      REST CALL LOGS
+    </ng-template>
+    <div class="main-content">
+      <app-messages></app-messages>
+    </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
