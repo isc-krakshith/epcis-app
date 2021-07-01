@@ -8,3 +8,9 @@
   margin-top: 20px;
   margin-left: 270px;
 }
+
+.full-width {
+  width: 95%;
+  color: grey;
+  margin-left: 2%;
+}
