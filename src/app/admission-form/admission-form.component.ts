@@ -27,40 +27,40 @@ export class AdmissionFormComponent implements OnInit{
   
   onAdmit() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.admitForm.value);
+    console.log(this.admitForm.value);
     var JSONString = JSON.stringify(this.admitForm.value)
     
     this.epcisIRISservice.admitPatient(JSONString).subscribe((data: any) => {
       //this.reset()
-      console.log("Success", data, "success");
+      console.log("Admit process: ", data, "success");
 
     }, error => {
-      console.log("There was an error in admit process", error);
+      console.warn("There was an error in admit process", error);
     })
   }
 
   onDischarge() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.admitForm.value);
+    console.log(this.admitForm.value);
     var JSONString = JSON.stringify(this.admitForm.value)
     
     this.epcisIRISservice.dischargePatient(JSONString).subscribe((data: any) => {
       //this.reset()
-      console.log("Success", data, "success");
+      console.log("Discharge process: ", data, "success");
 
     }, error => {
-      console.log("There was an error in discharge process", error);
+      console.warn("There was an error in discharge process", error);
     })
   }
 
   admit(){
+    console.log("Admitting...");
     this.onAdmit();
-    console.log("submitting");
   }
 
   discharge(){
+    console.log("Discharging...");
     this.onDischarge();
-    console.log("discharging");
   }
   submitted = false;
 
