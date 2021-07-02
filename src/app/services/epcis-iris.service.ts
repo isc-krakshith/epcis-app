@@ -15,7 +15,6 @@ export class EPCISIRISService {
     private messageService: MessageService) { }
 
   private log(message: string) {
-    console.warn("called...")
     this.messageService.add(`EPCIS Service: ${message}`);
   }
   private handleError<T>(operation = 'operation', result?: T) {
@@ -103,17 +102,17 @@ export class EPCISIRISService {
       catchError(this.handleError<any>('linkPigeonhole')))
   }
 
-  idetifyPigeonHole(testPayload:any):Observable<any> {
+  scanLocation(testPayload:any):Observable<any> {
     const headers = new HttpHeaders()
     let url = 'http://localhost:52773/query/demoStep6'
     return this.http.get<any>(url,this.httpTextOptions)
     .pipe(
-      tap((any: any) => this.log('Identify Pigeon Hole : '+`${any}`)),
+      tap((any: any) => this.log('Scan location : '+`${any}`)),
       //Sorry this is a hack... Complete REST response can be seen in the REST CALL LOGS TAB
       //but it cannot be parsed and an http parsing error is reported.
       //Below we are effectively making the error OK :-|
       catchError((any) => {
-        this.log('Identify Pigeon Hole : ' /*'+ `${any.error.error}` + " Response follows... : '*/ + `${any.error.text}`);
+        this.log('Scan location : ' /*'+ `${any.error.error}` + " Response follows... : '*/ + `${any.error.text}`);
         return throwError(any);
       }))
   }

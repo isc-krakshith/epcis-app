@@ -32,7 +32,7 @@ export class GenLabelComponent implements OnInit {
   
   ongetSpId() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.genLabelForm.value);
+    console.log(this.genLabelForm.value);
     var JSONString = JSON.stringify(this.genLabelForm.value)
     
     this.epcisIRISservice.getInpatientSpellId(JSONString).subscribe((data: any) => {
@@ -46,17 +46,17 @@ export class GenLabelComponent implements OnInit {
       //(data.EventQueryResult[0].EPCISBody.EventList.TransactionEvent[0].any[1])
 
     }, error => {
-      console.log("There was an error in retrieving inpatient spell id", error);
+      console.warn("There was an error in retrieving inpatient spell id", error);
     })
   }
 
   getSpId(){
+    console.log("Getting Spell Id...");
     this.ongetSpId();
-    console.log("Getting Spell Id");
   }
   onGetLocId() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.genLabelForm.value);
+    console.log(this.genLabelForm.value);
     var JSONString = JSON.stringify(this.genLabelForm.value)
     
     this.epcisIRISservice.getPatientLocationId(JSONString).subscribe((data: any) => {
@@ -70,21 +70,23 @@ export class GenLabelComponent implements OnInit {
       //(data.EventQueryResult[0].EPCISBody.EventList.TransactionEvent[0].any[1])
 
     }, error => {
-      console.log("There was an error in retrieving patient location id", error);
+      console.warn("There was an error in retrieving patient location id", error);
     })
   }
 
   getLocId(){
+    console.log("Getting location Id...");
     this.onGetLocId();
   }
 
-  onDone() {
+  onGenLabel() {
     this.disableGenerateLabelButton=true;
     this.displayLabel=true;
   }
 
-  done() {
-    this.onDone();
+  genLabel() {
+    console.log("Generating label...");
+    this.onGenLabel();
   }
   submitted = false;
 

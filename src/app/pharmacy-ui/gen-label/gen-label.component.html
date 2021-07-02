@@ -33,7 +33,7 @@
                 <td>
                 <div class = full-width>
                     <mat-form-field>
-                        <mat-label>INPATIENT SPELL</mat-label>
+                        <mat-label>Inpatient Spell</mat-label>
                         <input matInput formControlName="inSpId" readonly>
                     </mat-form-field>
                 </div>
@@ -48,7 +48,7 @@
                 <td>
                 <div class = full-width>
                     <mat-form-field [style.width.px]="310">
-                        <mat-label>PATIENT LOCATION</mat-label>
+                        <mat-label>Patient Location</mat-label>
                         <input matInput formControlName="locId" readonly>
                     </mat-form-field>
                 </div>
@@ -56,8 +56,8 @@
             </tr>
         </table>
     </form>
-    <div class="done-button-wrapper">
-        <button mat-raised-button color="primary" type = submit (click)="done()" [disabled]="disableGenerateLabelButton">Generate Pharmacy Label</button>
+    <div class="genlabel-button-wrapper">
+        <button mat-raised-button color="primary" type = submit (click)="genLabel()" [disabled]="disableGenerateLabelButton">Generate Pharmacy Label</button>
     </div>
     <div *ngIf="displayLabel">
         <img class = "prescription-label" [src]="imageSource" width="200"/>

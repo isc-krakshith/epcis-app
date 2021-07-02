@@ -1,19 +1,17 @@
 <div class="gen-label-form">
+    <h2 class = form-header>Medicines to collect</h2>
     <form [formGroup]= "retrieveItemsForm" (ngSubmit)="onSubmit()">
         <table cellspacing="0">
             <tr>
-                <h2 class = form-header>Collection location(s)</h2>
-            </tr>
-            <tr>
                 <td>
                 <div class="entry-button-wrapper">
-                    <button mat-raised-button color="primary" type = submit (click)="getItems()">Retrieve Items for</button>
+                    <button mat-raised-button color="primary" type = submit (click)="getItems()" [disabled]="allComplete">Retrieve Items for</button>
                 </div>
                 </td>
                 <td>
                 <div class = half-width>
                     <mat-form-field>
-                        <mat-label>location</mat-label>
+                        <mat-label>Location</mat-label>
                         <input matInput formControlName="location">
                     </mat-form-field>
                 </div>
@@ -21,4 +19,28 @@
             </tr>
         </table>
     </form>
+    <div *ngIf="isListVisible">            
+        <section class="list-section">
+        <span class="-list-section">
+            <mat-checkbox class="list-margin"
+                        [checked]="allComplete"
+                        [color]="task.color"
+                        [indeterminate]="someComplete()"
+                        (change)="setAll($event.checked)">
+            {{task.name}}
+            </mat-checkbox>
+        </span>
+        <span class="list-section">
+            <ul>
+            <li *ngFor="let subtask of task.subtasks">
+                <mat-checkbox [(ngModel)]="subtask.completed"
+                            [color]="subtask.color"
+                            (ngModelChange)="updateAllComplete()">
+                {{subtask.name}}
+                </mat-checkbox>
+            </li>
+            </ul>
+        </span>
+        </section>          
+    </div>
 </div>

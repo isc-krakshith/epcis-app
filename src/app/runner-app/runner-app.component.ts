@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class RunnerAppComponent implements OnInit {
 
   constructor() { }
-  isIdentifyPigeonHole = false;
-  isIdentifyWard = false;
+  isidentifyLocation = false;
   isRetrieveItems = false;
   isComingSoon = false;
 
@@ -18,27 +17,18 @@ export class RunnerAppComponent implements OnInit {
 
   loadContent(selection: String)
   {
-    if (selection == 'identifyPigeonHole'){
+    if (selection == 'identifyLocation'){
       this.isComingSoon = false;
-      this.isIdentifyPigeonHole=true;
-      this.isIdentifyWard = false;
-      this.isRetrieveItems = false;
-    }
-    else if (selection == 'identifyWard'){
-      this.isIdentifyPigeonHole=false;
-      this.isIdentifyWard = true;
-      this.isComingSoon = false;
+      this.isidentifyLocation=true;
       this.isRetrieveItems = false;
     }
     else if (selection == 'retrieveItems'){
-      this.isIdentifyPigeonHole=false;
-      this.isIdentifyWard = false;
+      this.isidentifyLocation=false;
       this.isComingSoon = false;
       this.isRetrieveItems = true;
     }
     else if (selection == 'comingsoon'){
-      this.isIdentifyPigeonHole=false;
-      this.isIdentifyWard = false;
+      this.isidentifyLocation=false;
       this.isComingSoon = true;
       this.isRetrieveItems = false;
     }

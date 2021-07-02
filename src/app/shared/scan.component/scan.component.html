@@ -4,7 +4,7 @@
 <div>
     <img class = "scan-doc" id= "scanDoc" [@fade]="state" [src]="imageSource"/>
 </div>
-<div *ngIf = "isPigeonHoleScan">
+<div *ngIf = "isScanLocation">
     <form [formGroup]= "scanForm">
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Location Friendly Name</mat-label>
