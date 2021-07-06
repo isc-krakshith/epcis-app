@@ -29,16 +29,24 @@ export class EPCISIRISService {
       return of(result as T);
     };
   }
+
   getBackendIP():string {
     //when the front end is run in an angular container
     //environment.apiURL will be an empty string IF backend IP address
     //is not provided to ng at build time, environment variable HOST_IP
+    /*
     if (environment.apiURL==="") {
       return 'http://localhost'
     }
     else {
       return 'http://'+environment.apiURL;
     }
+    //The most reliable way to find the IP address of the container
+    //is to read it from the browser adddress bar
+    //return the substring between 'http://' and the port marker ':' */
+    
+    let url = location.toString()
+    return url.substr(7,(url.indexOf(':',7)-7));
   }
 
   // It appears unnecessary to create http options / headers
