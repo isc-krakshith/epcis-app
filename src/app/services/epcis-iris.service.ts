@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
+import { environment } from 'src/environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class EPCISIRISService {
   private log(message: string) {
     this.messageService.add(`EPCIS Service: ${message}`);
   }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -26,6 +28,17 @@ export class EPCISIRISService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+  getBackendIP():string {
+    //when the front end is run in an angular container
+    //environment.apiURL will be an empty string IF backend IP address
+    //is not provided to ng at build time, environment variable HOST_IP
+    if (environment.apiURL==="") {
+      return 'http://localhost'
+    }
+    else {
+      return 'http://'+environment.apiURL;
+    }
   }
 
   // It appears unnecessary to create http options / headers
@@ -57,7 +70,8 @@ export class EPCISIRISService {
   admitPatient(admitForm: any):Observable<any> {
 
     const headers = new HttpHeaders()
-    let url = 'http://localhost:52773/query/demoStep1'
+    
+    let url = this.getBackendIP()+':52773/query/demoStep1'
     return this.http.post<any>(url, admitForm,this.httpOptions)
     .pipe(
       tap((newAdmit: any) => this.log('Admit: ' + `${newAdmit.PAS}`)),
@@ -66,7 +80,7 @@ export class EPCISIRISService {
 
   linkDischarge():Observable<any> {
     const headers = new HttpHeaders()
-    let url = 'http://localhost:52773/query/demoStep2'
+    let url = this.getBackendIP()+':52773/query/demoStep2'
     return this.http.get<any>(url)
     .pipe(
       tap((newLink: any) => this.log('Link Discharge Document: '+`${newLink}`)),
@@ -75,7 +89,7 @@ export class EPCISIRISService {
 
   getInpatientSpellId(genLabelForm: any):Observable<any> {
     const headers = new HttpHeaders()
-    let url = 'http://localhost:52773/query/demoStep3'
+    let url = this.getBackendIP()+':52773/query/demoStep3'
     return this.http.get<any>(url, genLabelForm)
     .pipe(
       tap((any: any) => this.log('Inpatient Spell Id: '+`${any.EventQueryResult[0].EPCISBody.EventList.TransactionEvent[0].any[1]}`)),
@@ -85,7 +99,7 @@ export class EPCISIRISService {
 
   getPatientLocationId(genLabelForm: any):Observable<any> {
     const headers = new HttpHeaders()
-    let url = 'http://localhost:52773/query/demoStep4'
+    let url = this.getBackendIP()+':52773/query/demoStep4'
     return this.http.get<any>(url, genLabelForm)
     .pipe(
       tap((any: any) => this.log('Patient Location Id: '+`${any.EventQueryResult[0].EPCISBody.EventList.ObjectEvent[0].bizLocation.id}`)),
@@ -95,7 +109,7 @@ export class EPCISIRISService {
 
   linkPigeonHole():Observable<any> {
     const headers = new HttpHeaders()
-    let url = 'http://localhost:52773/query/demoStep5'
+    let url = this.getBackendIP()+':52773/query/demoStep5'
     return this.http.get<any>(url)
     .pipe(
       tap((newLink: any) => this.log('Link Pigeon Hole : '+`${newLink}`)),
@@ -104,7 +118,7 @@ export class EPCISIRISService {
 
   scanLocation(testPayload:any):Observable<any> {
     const headers = new HttpHeaders()
-    let url = 'http://localhost:52773/query/demoStep6'
+    let url = this.getBackendIP()+':52773/query/demoStep6'
     return this.http.get<any>(url,this.httpTextOptions)
     .pipe(
       tap((any: any) => this.log('Scan location : '+`${any}`)),
@@ -119,7 +133,7 @@ export class EPCISIRISService {
 
   retrieveItems(retrieveForm: any):Observable<any> {
     const headers = new HttpHeaders()
-    let url = 'http://localhost:52773/query/demoStep7'
+    let url = this.getBackendIP()+':52773/query/demoStep7'
     return this.http.get<any>(url,retrieveForm)
     .pipe(
       tap((any: any) => this.log('Retrieve Items : '+`${any}`)),
@@ -135,7 +149,7 @@ export class EPCISIRISService {
   dischargePatient(admitForm: any):Observable<any> {
 
     const headers = new HttpHeaders()
-    let url = 'http://localhost:52773/query/demoStep8'
+    let url = this.getBackendIP()+':52773/query/demoStep8'
     return this.http.post<any>(url, admitForm,this.httpOptions)
     .pipe(
       tap((newDischarge: any) => this.log('Discharge: ' + `${newDischarge.PAS}`)),
