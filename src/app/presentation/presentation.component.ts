@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { EPCISIRISService } from '../services/epcis-iris.service';
 
 @Component({
+  providers:[
+    EPCISIRISService],
   selector: 'app-presentation',
   templateUrl: './presentation.component.html',
   styleUrls: ['./presentation.component.css']
 })
 export class PresentationComponent implements OnInit {
   showInstructions: boolean = false;
-  constructor() { }
+  constructor(
+    private urlChecker: EPCISIRISService
+    ) { }
 
   ngOnInit(): void {
     this.showInstructions = false;
@@ -45,12 +50,13 @@ export class PresentationComponent implements OnInit {
 
   openInNewTab(destination: string) {
     let url:string = '';
+    url = this.urlChecker.getBackendIP();
     if (destination == 'production')
     {
-      url = 'http://localhost:52773/csp/healthshare/epcis/EnsPortal.ProductionConfig.zen?PRODUCTION=EPCIS.intersystems.Production'
+      url = url+':52773/csp/healthshare/epcis/EnsPortal.ProductionConfig.zen?PRODUCTION=EPCIS.intersystems.Production'
     }
     else if (destination = 'messages') {
-      url = 'http://localhost:52773/csp/healthshare/epcis/EnsPortal.MessageViewer.zen'
+      url = url + ':52773/csp/healthshare/epcis/EnsPortal.MessageViewer.zen'
     }
     window.open(url, '_blank').focus();
   }
