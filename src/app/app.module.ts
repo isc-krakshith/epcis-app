@@ -15,6 +15,7 @@ import { ScanComponent } from './shared/scan.component/scan.component';
 import { ComingSoonComponent } from './shared/comingsoon.component/comingsoon.component';
 import { GenLabelComponent } from './pharmacy-ui/gen-label/gen-label.component';
 import { RetrieveItemsComponent } from './runner-app/retrieve-items/retrieve-items.component';
+import { PresentationComponent } from './presentation/presentation.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RetrieveItemsComponent } from './runner-app/retrieve-items/retrieve-ite
     ScanComponent,
     ComingSoonComponent,
     GenLabelComponent,
-    RetrieveItemsComponent
+    RetrieveItemsComponent,
+    PresentationComponent
   ],
   imports: [
     BrowserModule,
