@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiURL:'${ENV_BACKEND_URI}'
+  apiURL:'${ENV_BACKEND_URI}',
+  apiPORT: '${ENV_BACKEND_PORT}',
+  version: ''
 };
 
 /*
